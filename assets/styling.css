@@ -1,0 +1,10 @@
+body {
+	margin: 0;
+	width: 100vw;
+	text-align: center;
+}
+
+.banner {
+	width: 100vw;
+	max-width: max-content;
+}
