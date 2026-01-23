@@ -4,6 +4,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Smythe&display=swap" rel="stylesheet">
+
 	<link rel="stylesheet" href="assets/styling.css">
 	<script src="app.js" type="module"></script>
 
@@ -16,12 +20,21 @@
 		/>
 	</header>
 	<main>
-		<ul id="product-menu"></ul>
-		<template>
-			<li>
+		<ul id="product-menu">
+		<!--<template>-->
+			<li class="product">
+			<!-- Dette burde nok ha vore eit bilde i ein ekte app for semantikk -->
+				<div class="img">🍕</div>
+				<section class="details">
+					<span class="name">Pizza</span>
+					<span class="ingredients">pepperoni, mushroom, mozarella</span>
+					<span class="price">$14</span>
+				</section>
 				<!-- Her må eg finne ut kva for tags eg skal bruke for å representere produktet. -->
 			</li>
-		</template>
+			<hr />
+		<!--</template>-->
+		</ul>
 		<section id="checkout"></section>
 	</main>
 </body>
