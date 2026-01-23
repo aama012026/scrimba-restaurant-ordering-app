@@ -1,10 +1,98 @@
+:root {
+	--c-background: #fafaf5;
+	--c-light: #dedede;
+	--c-rule: #D2D2D2;
+	--c-medium: #8B8B8B;
+	--c-dark: #3C3C3C;
+	--c-add-soft: #00880066;
+	--c-add-strong: #008800;
+	--c-remove-soft:#88000066;
+	--c-remove-strong: #BB0000;
+}
+
 body {
 	margin: 0;
 	width: 100vw;
 	text-align: center;
+	font-family: smythe;
+	color: var(--c-dark);
+	background-color: var(--c-background);
 }
 
 .banner {
 	width: 100vw;
 	max-width: max-content;
+}
+
+#product-menu {
+	margin: 0;
+	padding: 0 30px;
+}
+
+.product {
+	display: flex;
+	margin: 0;
+	padding: 1rem 0;
+	align-items: center;
+	justify-content: space-between;
+	& > .img {
+		font-family: inter;
+		font-size: 4.92rem;
+	}
+	& > .details {
+		display: flex;
+		gap: 0.5lh;
+		flex-direction: column;
+		align-items: start;
+		& > .name {
+			font-size: 1.75rem;
+		}
+		& > .ingredients {
+			color: var(--c-medium);
+		}
+		& > .price {
+			font-size: 1.5rem;
+		}
+	}
+	& > .spacer {
+		flex-grow: 1;
+	}
+}
+
+button {
+	height: 3lh;
+	aspect-ratio: 1/1;
+	margin: 0.2rem;
+	background: none;
+	color: var(--c-dark);
+	border: 1px solid var(--c-light);
+	border-radius:50%;
+	&.add {
+		border-color: var(--c-add-soft);
+		&:focus, &:hover{
+			border-color: var(--c-add-strong);
+		}
+		&:active {
+			font-weight: bold;
+			color: var(--c-background);
+			background-color: var(--c-add-strong);
+		}
+	}
+	&.remove {
+		visibility: hidden;
+		border-color: var(--c-remove-soft);
+		&:focus, &:hover {
+			border-color: var(--c-remove-strong);
+		}
+		&:active {
+			font-weight: bold;
+			color: var(--c-background);
+			background-color: var(--c-remove-strong);
+		}
+	}
+}
+
+hr {
+	border: none;
+	border-top: 1px solid var(--c-rule);
 }
