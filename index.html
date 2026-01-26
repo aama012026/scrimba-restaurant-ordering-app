@@ -39,12 +39,14 @@
 		<section id="checkout">
 			<span class="name">Your order</span>
 			<ul id="checkout-list">
-				<li class="checkout-item">
-					<span class="name">Pizza</span>
-					<button class="remove-simple">remove</button>
-					<div class="spacer"></div>
-					<span class="price">$14</span>
-				</li>
+				<template id="checkout-entry-template">
+					<li class="checkout-item">
+						<span class="name">Pizza</span>
+						<button class="remove-simple">remove</button>
+						<div class="spacer"></div>
+						<span class="price">$14</span>
+					</li>
+				</template>
 				<hr class="fat" />
 				<li id="total-price">
 					<span class="name">Total Price:</span>

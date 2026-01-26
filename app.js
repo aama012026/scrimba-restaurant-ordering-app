@@ -1,6 +1,8 @@
 import { menuArray } from "./assets/product-data.js";
 const productMenu = document.getElementById('product-menu');
 const productTemplate = document.getElementById('product-template');
+const checkoutList = document.getElementById('checkout-list');
+const checkoutEntryTemplate = document.getElementById('checkout-entry-template');
 const menuElements = [];
 const cart = [];
 
@@ -25,13 +27,28 @@ function onLoad() {
 }	
 function makeMenuItemFragment(menuItem) {
 	const {id, name, emoji, ingredients, price} = menuItem;
-	const menuItemElement = document.importNode(productTemplate.content, true);
-	menuItemElement.querySelector('li').dataset.productId = id;
-	menuItemElement.querySelector('.img').textContent = emoji;
-	menuItemElement.querySelector('.name').textContent = name;
-	menuItemElement.querySelector('.ingredients').textContent = ingredients.join(', ');
-	menuItemElement.querySelector('.price').textContent = currency + price;
-	return menuItemElement;
+	const menuItemFragment = document.importNode(productTemplate.content, true);
+	menuItemFragment.querySelector('li').dataset.productId = id;
+	menuItemFragment.querySelector('.img').textContent = emoji;
+	menuItemFragment.querySelector('.name').textContent = name;
+	menuItemFragment.querySelector('.ingredients').textContent = ingredients.join(', ');
+	menuItemFragment.querySelector('.price').textContent = currency + price;
+	return menuItemFragment;
+}
+
+function makeCheckoutEntryFragment(menuItem, count) {
+	const {id, name, price} = menuItem;
+	const checkoutEntryFragment = document.importNode(checkoutEntryTemplate.content, true);
+	if (count === 1) {
+		checkoutEntryFragment.querySelector('.name').textContent = name;
+		checkoutEntryFragment.querySelector('.price').textContent = currency + price;
+
+	}
+	else {
+		checkoutEntryFragment.querySelector('.name').textContent = `${name} (${count})`;
+		checkoutEntryFragment.querySelector('.price').textContent = currency + (price * count);
+	}
+	return checkoutEntryFragment;
 }
 
 function renderMenuItems(itemArray, elementArray, order) {
@@ -48,28 +65,34 @@ function renderMenuItems(itemArray, elementArray, order) {
 		if (i != itemArray.length-1) {
 			productMenu.appendChild(horizontalRule.cloneNode(true));
 		}
-		renderUpdate(elementArray, order)
+		renderUpdate(itemArray, elementArray, order)
 	});
 }
-//Noko funkar ikkje, mogleg det framleis er fragment/element-feil.
-function renderUpdate(elementArray, order) {
+
+function renderUpdate(menuArray, elementArray, order) {
 	elementArray.forEach((element) => {
 		const shouldShow = order[element.dataset.productId] > 0 ? 'visible' : 'hidden';
 		element.querySelector('.remove').style.visibility = shouldShow;
+	})
+	checkoutList.innerHTML = '';
+	order.forEach((count, id) => {
+		if (count > 0) {
+			const productData = menuArray.find((item) => item.id === id);
+			const fragmet = makeCheckoutEntryFragment(productData, count);
+			checkoutList.appendChild(fragmet);
+		}
 	})
 }
 
 function addToOrder(productId, order) {
 	const previousValue = order[productId];
 	order[productId]++;	
-	if (previousValue <= 0) {
-		renderUpdate(menuElements, cart);
-	}
+	renderUpdate(menuArray, menuElements, cart);
 }
 function removeFromOrder(productId, order) {
 	order[productId]--;
 	if (order[productId] <= 0) {
 		order[productId] = 0;
-		renderUpdate(menuElements, cart);
 	}
+	renderUpdate(menuArray, menuElements, cart);
 }
