@@ -13,7 +13,7 @@ productMenu.addEventListener('click', (e) => {
 		addToOrder(e.target.parentElement.dataset.productId, cart);
 	}
 	else if (e.target.classList.contains('remove')) {
-
+		removeFromOrder(e.target.parentElement.dataset.productId, cart);
 	}
 })
 
@@ -52,8 +52,8 @@ function renderMenuItems(itemArray, elementArray, order) {
 	});
 }
 //Noko funkar ikkje, mogleg det framleis er fragment/element-feil.
-function renderUpdate(menuElements, order) {
-	menuElements.forEach((element) => {
+function renderUpdate(elementArray, order) {
+	elementArray.forEach((element) => {
 		const shouldShow = order[element.dataset.productId] > 0 ? 'visible' : 'hidden';
 		element.querySelector('.remove').style.visibility = shouldShow;
 	})
@@ -70,6 +70,6 @@ function removeFromOrder(productId, order) {
 	order[productId]--;
 	if (order[productId] <= 0) {
 		order[productId] = 0;
-		renderUpdate();
+		renderUpdate(menuElements, cart);
 	}
 }
