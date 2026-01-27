@@ -9,6 +9,7 @@
 	--c-add-strong: #008800;
 	--c-remove-soft:#88000066;
 	--c-remove-strong: #BB0000;
+	--f-plain: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	--banner-width: 600px;
 }
 
@@ -85,7 +86,9 @@ button {
 		border: 1px solid var(--c-light);
 		border-radius:50%;
 	}
-	
+	&.accent {
+		width: 100%;
+	}	
 	&.remove-simple {
 		border: none;
 		background: none;
@@ -131,12 +134,27 @@ dialog {
 	border-radius: 4px;
 	background-color: var(--c-background);
 	&::backdrop {
-		backdrop-filter: blur(3px);
+		backdrop-filter: blur(4px);
 	}
+}
+
+form {
+	text-align: left;
+}
+
+label {
+	padding-left: 5%;
+	font-family: var(--f-plain);
 }
 
 input {
 	display: block;
+	box-sizing: border-box;
+	width: 90%;
+	height: 2.5lh;
+	margin: 0 auto 0.5lh;
+	padding-left: 1em;
+	font-family: var(--f-plain);
 }
 
 hr {
@@ -162,8 +180,8 @@ hr {
 }
 
 .accent {
-	width: 100%;
-	padding: 1lh;
+	height: 3lh;
+	margin-top: 2lh;
 	border: none;
 	border-radius: 4px;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
