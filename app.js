@@ -1,8 +1,10 @@
 import { menuArray } from "./assets/product-data.js";
 const productMenu = document.getElementById('product-menu');
 const productTemplate = document.getElementById('product-template');
+const checkoutSection = document.getElementById('checkout');
 const checkoutList = document.getElementById('checkout-list');
 const checkoutEntryTemplate = document.getElementById('checkout-entry-template');
+const checkoutSumTemplate = document.getElementById('checkout-sum-template');
 const menuElements = [];
 const cart = [];
 
@@ -51,6 +53,12 @@ function makeCheckoutEntryFragment(menuItem, count) {
 	return checkoutEntryFragment;
 }
 
+function makeCheckoutSumFragment(price) {
+	const checkoutSumFragment = document.importNode(checkoutSumTemplate.content, true);
+	checkoutSumFragment.querySelector('.price').textContent = currency + price;
+	return checkoutSumFragment;
+}
+
 function renderMenuItems(itemArray, elementArray, order) {
 	const horizontalRule = document.createElement('hr');
 	horizontalRule.classList.add('slim');
@@ -75,13 +83,19 @@ function renderUpdate(menuArray, elementArray, order) {
 		element.querySelector('.remove').style.visibility = shouldShow;
 	})
 	checkoutList.innerHTML = '';
+	let cartIsEmpty = true;
+	let totalPrice = 0;
 	order.forEach((count, id) => {
 		if (count > 0) {
 			const productData = menuArray.find((item) => item.id === id);
 			const fragmet = makeCheckoutEntryFragment(productData, count);
+			totalPrice += productData.price * count;
 			checkoutList.appendChild(fragmet);
+			cartIsEmpty = false;
 		}
 	})
+	checkoutSection.style.display = cartIsEmpty ? "none" : "block";
+	checkoutList.appendChild(makeCheckoutSumFragment(totalPrice));
 }
 
 function addToOrder(productId, order) {
