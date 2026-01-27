@@ -37,14 +37,25 @@ main {
 	padding: 0;
 }
 
+ul {
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+	padding: 0;
+}
+
 li {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
 	margin: 0;
-	padding: 1rem 0;
-	gap: 0.5lh;
+	&.product {
+		padding: 0.5rem 0;
+	}
+	&.checkout-item {
+		padding: 0.2rem 0;
+	}
 	& > .img {
 		font-family: inter;
 		font-size: 4.92rem;
@@ -212,14 +223,6 @@ hr {
 	background-color: var(--c-background);
 	border-top: 1px solid var(--c-rule);
 	padding: 1lh 0;
-}
-
-ul {
-	display: flex;
-	flex-direction: column;
-	gap: 0.5lh;
-	list-style: none;
-	padding: 0;
 }
 
 #total-price {
