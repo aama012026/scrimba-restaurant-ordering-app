@@ -85,16 +85,7 @@ button {
 		border: 1px solid var(--c-light);
 		border-radius:50%;
 	}
-	&.accent {
-		width: 100%;
-		padding: 1lh;
-		border: none;
-		border-radius: 4px;
-		font-family: Verdana, Geneva, Tahoma, sans-serif;
-		font-weight: bold;
-		color: var(--c-background);
-		background-color: var(--c-accent);
-	}
+	
 	&.remove-simple {
 		border: none;
 		background: none;
@@ -132,6 +123,22 @@ button {
 	}
 }
 
+dialog {
+	width: 90vw;
+	max-width: var(--banner-width);
+	box-sizing: border-box;
+	border: none;
+	border-radius: 4px;
+	background-color: var(--c-background);
+	&::backdrop {
+		backdrop-filter: blur(3px);
+	}
+}
+
+input {
+	display: block;
+}
+
 hr {
 	width: 100%;
 	&.slim {
@@ -155,7 +162,14 @@ hr {
 }
 
 .accent {
-
+	width: 100%;
+	padding: 1lh;
+	border: none;
+	border-radius: 4px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-weight: bold;
+	color: var(--c-background);
+	background-color: var(--c-accent);
 }
 
 #checkout {

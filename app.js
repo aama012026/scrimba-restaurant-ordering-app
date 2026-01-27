@@ -5,6 +5,8 @@ const checkoutSection = document.getElementById('checkout');
 const checkoutList = document.getElementById('checkout-list');
 const checkoutEntryTemplate = document.getElementById('checkout-entry-template');
 const checkoutSumTemplate = document.getElementById('checkout-sum-template');
+const paymentDialog = document.getElementById('payment-mockup');
+
 const menuElements = [];
 const cart = [];
 
@@ -18,6 +20,15 @@ productMenu.addEventListener('click', (e) => {
 	}
 	else if (e.target.classList.contains('remove')) {
 		removeFromOrder(e.target.parentElement.dataset.productId, cart);
+	}
+})
+
+checkoutSection.addEventListener('click', (e) => {
+	if (e.target.classList.contains('remove-simple')) {
+		removeFromOrder(e.target.parentElement.dataset.productId, cart);
+	}
+	else if (e.target.id === "btn-order") {
+		paymentDialog.showModal();
 	}
 })
 
@@ -41,6 +52,7 @@ function makeMenuItemFragment(menuItem) {
 function makeCheckoutEntryFragment(menuItem, count) {
 	const {id, name, price} = menuItem;
 	const checkoutEntryFragment = document.importNode(checkoutEntryTemplate.content, true);
+	checkoutEntryFragment.querySelector('li').dataset.productId = id;
 	if (count === 1) {
 		checkoutEntryFragment.querySelector('.name').textContent = name;
 		checkoutEntryFragment.querySelector('.price').textContent = currency + price;
