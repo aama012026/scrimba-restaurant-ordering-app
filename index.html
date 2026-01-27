@@ -59,13 +59,15 @@
 		</section>
 	</main>
 	<dialog id="payment-mockup" closedby="any">
+		<div class="fake-header">Enter card details</div>
 		<form name="payment-details" class="form">
 			<label for="card-name">Name on credit card:</label>
-			<input id="card-name" name="card-name" type="text" placeholder="Full Name Nameson" />
+			<input required id="card-name" name="card-name" placeholder="Full Name Nameson" />
 			<label for="card-number">Card Number:</label>
-			<input id="card-number" name="card-number" type="number" placeholder="XXXX - XXXX - XXXX - XXXX" />
+			<input required id="card-number" name="card-number" pattern="^[0-9 ]{13,19}$" 
+				   placeholder="XXXX XXXX XXXX XXXX" />
 			<label for="cvv">CVV:</label>
-			<input id="cvv" name="cvv" type="number" placeholder="123" />
+			<input required id="cvv" name="cvv" pattern="^[0-9]{3,4}$" placeholder="xxx / xxxx" />
 			<input type="submit" class="accent" value="Pay" />
 		</form>
 	</dialog>

@@ -160,6 +160,15 @@ input {
 	margin: 0 auto 0.5lh;
 	padding-left: 1em;
 	font-family: var(--f-plain);
+	&:invalid {
+		border-left: 4px solid red;
+	}
+	&:valid {
+		border-left: 4px solid var(--c-accent);
+	}
+	&:required:placeholder-shown{
+		border-left: 4px solid orange;
+	}
 }
 
 hr {
