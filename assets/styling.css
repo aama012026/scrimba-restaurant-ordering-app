@@ -132,7 +132,10 @@ dialog {
 	box-sizing: border-box;
 	border: none;
 	border-radius: 4px;
+	font-family: var(--f-plain);
+	color: var(--c-dark);
 	background-color: var(--c-background);
+	box-shadow: 0 0 5rem #0005;
 	&::backdrop {
 		backdrop-filter: blur(4px);
 	}
@@ -143,13 +146,15 @@ form {
 }
 
 label {
-	padding-left: 5%;
-	font-family: var(--f-plain);
+	padding-left: 5.3%;
+	font-size: 1rem;
 }
 
 input {
 	display: block;
 	box-sizing: border-box;
+	background: none;
+	border: 1px solid var(--c-rule);
 	width: 90%;
 	height: 2.5lh;
 	margin: 0 auto 0.5lh;
@@ -175,19 +180,21 @@ hr {
 	}
 }
 
-.remove-simple {
-
-}
-
 .accent {
 	height: 3lh;
 	margin-top: 2lh;
 	border: none;
-	border-radius: 4px;
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	border-radius: 2px;
+	font-family: var(--f-plain);
 	font-weight: bold;
 	color: var(--c-background);
 	background-color: var(--c-accent);
+}
+
+.fake-header {
+	margin: 1em;
+	font-weight: bold;
+	font-size: 1.5rem;
 }
 
 #checkout {
@@ -199,11 +206,11 @@ hr {
 }
 
 ul {
-display: flex;
-flex-direction: column;
-gap: 0.5lh;
-list-style: none;
-padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5lh;
+	list-style: none;
+	padding: 0;
 }
 
 #total-price {
