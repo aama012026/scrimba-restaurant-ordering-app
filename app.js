@@ -6,6 +6,8 @@ const checkoutList = document.getElementById('checkout-list');
 const checkoutEntryTemplate = document.getElementById('checkout-entry-template');
 const checkoutSumTemplate = document.getElementById('checkout-sum-template');
 const paymentDialog = document.getElementById('payment-mockup');
+const paymentForm = document.forms["payment-details"];
+const btnSubmit = paymentForm.querySelector('button');
 
 const menuElements = [];
 const cart = [];
@@ -30,6 +32,14 @@ checkoutSection.addEventListener('click', (e) => {
 	else if (e.target.id === "btn-order") {
 		paymentDialog.showModal();
 	}
+})
+paymentForm.addEventListener('input', () => {
+	btnSubmit.disabled = !paymentForm.checkValidity();
+	console.log('cecked validity!')
+})
+paymentDialog.addEventListener('submit', (e) => {
+	e.preventDefault();
+	
 })
 
 function onLoad() {
