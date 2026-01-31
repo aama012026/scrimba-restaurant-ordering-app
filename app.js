@@ -8,12 +8,13 @@ const checkoutSumTemplate = document.getElementById('checkout-sum-template');
 const paymentDialog = document.getElementById('payment-mockup');
 const paymentForm = document.forms["payment-details"];
 const btnSubmit = paymentForm.querySelector('button');
+const orderCompleteSection = document.getElementById('order-complete');
 
 const menuElements = [];
 const cart = [];
 
 // Infrastrukturen for å converte er ikkje laga,
-// men det gir mening å separere representasjon frå verdi.
+// men det gir meining å separere representasjon frå verdi.
 let currency = '$'
 onLoad();
 productMenu.addEventListener('click', (e) => {
@@ -35,11 +36,20 @@ checkoutSection.addEventListener('click', (e) => {
 })
 paymentForm.addEventListener('input', () => {
 	btnSubmit.disabled = !paymentForm.checkValidity();
-	console.log('cecked validity!')
 })
 paymentDialog.addEventListener('submit', (e) => {
 	e.preventDefault();
-	
+	cart.forEach((v, i) => cart[i] = 0);
+	productMenu.querySelectorAll('button').forEach((el) => el.disabled = true);
+	const horizontalRule = document.createElement('hr');
+	horizontalRule.classList.add('slim');
+	productMenu.appendChild(horizontalRule.cloneNode(true));
+	orderCompleteSection.textContent =
+	`Thanks, ${paymentForm.elements['card-name'].value}! Your order is on its way!`;
+	orderCompleteSection.style.display = 'block';
+	paymentForm.reset();
+	paymentDialog.close();
+	renderUpdate(menuArray, menuElements, cart);
 })
 
 function onLoad() {

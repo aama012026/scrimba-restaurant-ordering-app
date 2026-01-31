@@ -1,6 +1,7 @@
 :root {
-	--c-background: #fafaf5;
-	--c-background-darken: rgb(from color-mix(in srgb, var(--c-accent) 80%, black) r g b / 0.07);
+	--c-bg: #fafaf5;
+	--c-bg-green: #ddf5ea;
+	--c-accent-dark: #065f46;
 	--c-accent: rgb(22, 219, 153);
 	--c-light: #dedede;
 	--c-rule: #D2D2D2;
@@ -22,7 +23,7 @@ body {
 	text-align: center;
 	font-family: smythe;
 	color: var(--c-dark);
-	background-color: var(--c-background);
+	background-color: var(--c-bg);
 }
 main {
 	padding: 0 30px;
@@ -106,7 +107,7 @@ button {
 		border-radius: 2px;
 		font-family: var(--f-plain);
 		font-weight: bold;
-		color: var(--c-background);
+		color: var(--c-bg);
 		background-color: var(--c-accent);
 		transition: all 60ms;
 		&:hover, &:focus {
@@ -119,19 +120,19 @@ button {
 			outline-offset: 4px;
 		}
 		&:active {
-			background-color: rgb(from color-mix(in srgb, var(--c-accent) 80%, black) r g b / 0.07);
-			color: var(--c-background);
+			background-color: var(--c-bg-green);
+			color: var(--c-bg);
 			text-shadow: 0 0 2px color-mix(in srgb, var(--c-accent) 70%, black); 
 		}
 		&:disabled {
 			background: repeating-linear-gradient(45deg,
 				var(--c-accent), 
 				var(--c-accent) 5%, 
-				var(--c-background-darken) 5%, 
-				var(--c-background-darken) 8.4%);
+				var(--c-bg-green) 5%, 
+				var(--c-bg-green) 8.4%);
 			border: none; 
-			text-shadow: 0 0 1px var(--c-dark); 
-			color: var(--c-medium);
+			color: var(--c-accent-dark);
+			text-shadow: none;
 		}
 	}	
 	&.remove-simple {
@@ -154,8 +155,14 @@ button {
 		}
 		&:active {
 			font-weight: bold;
-			color: var(--c-background);
+			color: var(--c-bg);
 			background-color: var(--c-add-strong);
+		}
+		&:disabled {
+			border-color: var(--c-rule);
+			background-color: var(--c-bg);
+			color: var(--c-rule);
+			font-weight: normal;
 		}
 	}
 	&.remove {
@@ -165,7 +172,7 @@ button {
 		}
 		&:active {
 			font-weight: bold;
-			color: var(--c-background);
+			color: var(--c-bg);
 			background-color: var(--c-remove-strong);
 		}
 	}
@@ -179,7 +186,7 @@ dialog {
 	border-radius: 4px;
 	font-family: var(--f-plain);
 	color: var(--c-dark);
-	background-color: var(--c-background);
+	background-color: var(--c-bg);
 	box-shadow: 0 0 5rem #0005;
 	&::backdrop {
 		backdrop-filter: blur(4px);
@@ -248,15 +255,17 @@ hr {
 #checkout {
 	position: sticky;
 	bottom: 0;
-	background-color: var(--c-background);
+	background-color: var(--c-bg);
 	border-top: 1px solid var(--c-rule);
 	padding: 1lh 0;
 }
 
-#total-price {
-
-}
-
-#btn-order {
-
+#order-complete {
+	display: none;
+	font-size: 2rem;
+	color: var(--c-accent-dark);
+	background-color: var(--c-bg-green);
+	border-radius: 2px;
+	padding: 1lh;
+	margin: 1lh 0;
 }
