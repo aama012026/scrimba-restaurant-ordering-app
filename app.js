@@ -7,7 +7,7 @@ const checkoutEntryTemplate = document.getElementById('checkout-entry-template')
 const checkoutSumTemplate = document.getElementById('checkout-sum-template');
 const paymentDialog = document.getElementById('payment-mockup');
 const paymentForm = document.forms["payment-details"];
-const btnSubmit = paymentForm.querySelector('button');
+const btnSubmit = paymentForm.querySelector('button[type="submit"]');
 const orderCompleteSection = document.getElementById('order-complete');
 
 const menuElements = [];
@@ -62,10 +62,12 @@ function makeMenuItemFragment(menuItem) {
 	const {id, name, emoji, ingredients, price} = menuItem;
 	const menuItemFragment = document.importNode(productTemplate.content, true);
 	menuItemFragment.querySelector('li').dataset.productId = id;
-	menuItemFragment.querySelector('.img').textContent = emoji;
+	menuItemFragment.querySelector('.icon').textContent = emoji;
 	menuItemFragment.querySelector('.name').textContent = name;
 	menuItemFragment.querySelector('.ingredients').textContent = ingredients.join(', ');
 	menuItemFragment.querySelector('.price').textContent = currency + price;
+	menuItemFragment.querySelector('.add').ariaLabel = `Add one ${name}`;
+	menuItemFragment.querySelector('.remove').ariaLabel = `Remove one ${name}`;
 	return menuItemFragment;
 }
 
@@ -73,6 +75,7 @@ function makeCheckoutEntryFragment(menuItem, count) {
 	const {id, name, price} = menuItem;
 	const checkoutEntryFragment = document.importNode(checkoutEntryTemplate.content, true);
 	checkoutEntryFragment.querySelector('li').dataset.productId = id;
+	checkoutEntryFragment.querySelector('.remove-simple').ariaLabel = `Remove one ${name}`;
 	if (count === 1) {
 		checkoutEntryFragment.querySelector('.name').textContent = name;
 		checkoutEntryFragment.querySelector('.price').textContent = currency + price;

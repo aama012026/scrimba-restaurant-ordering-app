@@ -58,7 +58,7 @@ li {
 	&.checkout-item {
 		padding: 0.2rem 0;
 	}
-	& > .img {
+	& > .icon {
 		font-family: inter;
 		font-size: 4.92rem;
 	}
@@ -66,13 +66,6 @@ li {
 		display: flex;
 		flex-direction: column;
 		align-items: start;
-		& > .ingredients {
-			color: var(--c-medium);
-			text-align: left;
-		}
-		& > .price {
-			font-size: 1.5rem;
-		}
 	}
 	.ingredients {
 		color: var(--c-medium);
@@ -250,6 +243,10 @@ hr {
 	margin: 1em;
 	font-weight: bold;
 	font-size: 1.5rem;
+}
+
+.not-displayed {
+	display: none;
 }
 
 #checkout {

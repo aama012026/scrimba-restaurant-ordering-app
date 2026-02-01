@@ -16,61 +16,68 @@
 <body>
 	<header>
 		<img class="banner" src="assets/img/header.png"
-			 alt="A banner saying Jimmy's Diner - The best burgers and pizzas in town, with a tasty burger as the background" 
+			 alt="A banner for the brand with a juicy burger in the background." 
 		/>
 	</header>
 	<main>
-		<ul id="product-menu">
-		<template id="product-template">
-			<li class="product">
-			<!-- Dette burde nok ha vore eit bilde i ein ekte app for semantikk -->
-				<div class="img">🍕</div>
-				<section class="details">
-					<span class="name">Pizza</span>
-					<span class="ingredients">pepperoni, mushroom, mozarella</span>
-					<span class="price">$14</span>
-				</section>
-				<div class="spacer"></div>
-				<button class="primary remove">-</button>
-				<button class="primary add">+</button>
-			</li>
-		</template>
-		</ul>
+		<section>
+			<h1 class="not-displayed">Order menu</h1>
+			<ul id="product-menu"></ul>
+		</section>
 		<section id="checkout">
-			<span class="name">Your order</span>
-			<ul id="checkout-list">
-				<template id="checkout-entry-template">
-					<li class="checkout-item">
-						<span class="name">Pizza</span>
-						<button class="remove-simple">remove</button>
-						<div class="spacer"></div>
-						<span class="price">$14</span>
-					</li>
-				</template>
-				<template id="checkout-sum-template">
-					<hr class="fat" />
-					<li id="total-price">
-						<span class="name">Total Price:</span>
-						<span class="price">$26</span>	
-					</li>
-				</template>
-			</ul>
+			<h2>Your order</h2>
+			<ul id="checkout-list"></ul>
 			<button class="accent" id="btn-order">Complete order</button>
 		</section>
 		<section id="order-complete">Thanks, Name! Your order is on its way!</section>
 	</main>
 	<dialog id="payment-mockup" closedby="any">
-		<div class="fake-header">Enter card details</div>
+		<h2>Enter card details</h2>
 		<form name="payment-details" class="form">
 			<label for="card-name">Name on credit card:</label>
-			<input required id="card-name" name="card-name" placeholder="Full Name Nameson" />
+			<input name="card-name" type="text" required 
+				   id="card-name" placeholder="Full Name Nameson"
+			/>
 			<label for="card-number">Card Number:</label>
-			<input required id="card-number" name="card-number" pattern="^[0-9 ]{13,19}$" 
-				   placeholder="XXXX XXXX XXXX XXXX" />
+			<input name="card-number" type="text" required inputmode="numeric"
+				   id="card-number" pattern="^[0-9 ]{13,19}$" placeholder="XXXX XXXX XXXX XXXX"
+			/>
 			<label for="cvv">CVV:</label>
-			<input required id="cvv" name="cvv" pattern="^[0-9]{3,4}$" placeholder="xxx / xxxx" />
+			<input name="cvv" type="text" required inputmode="numeric"
+				   id="cvv" pattern="^[0-9]{3,4}$" placeholder="xxx / xxxx"
+			/>
 			<button type="submit" class="accent" disabled>Pay</button>
 		</form>
 	</dialog>
+	<!-- Om dokumentet var større kunne templates vore i sin eigen fil. -->
+	<template id="product-template">
+		<li class="product">
+		<!-- Dette burde nok ha vore eit bilde i ein ekte app for semantikk -->
+			<span class="icon" aria-hidden="true">🍕</span>
+			<section class="details">
+				<span class="name">Pizza</span>
+				<span class="ingredients">pepperoni, mushroom, mozarella</span>
+				<span class="price">$14</span>
+			</section>
+			<div class="spacer"></div>
+			<button class="primary remove" aria-label="Remove one pizza">-</button>
+			<button class="primary add" aria-label="Add one pizza">+</button>
+		</li>
+	</template>
+	<template id="checkout-entry-template">
+		<li class="checkout-item">
+			<span class="name">Pizza</span>
+			<button class="remove-simple" aria-label="remove one pizza">remove</button>
+			<div class="spacer"></div>
+			<span class="price">$14</span>
+		</li>
+	</template>
+	<template id="checkout-sum-template">
+		<hr class="fat" />
+		<li id="total-price">
+			<span class="name">Total Price:</span>
+			<span class="price">$26</span>	
+		</li>
+	</template>
 </body>
 </html>
