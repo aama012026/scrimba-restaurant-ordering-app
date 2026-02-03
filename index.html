@@ -13,7 +13,7 @@
 
 	<title>Restaurant Ordering App Mockup</title>
 </head>
-<body>
+<body class="vanilla">
 	<header>
 		<img class="banner" src="assets/img/header.png"
 			 alt="A banner for the brand with a juicy burger in the background." 
@@ -24,14 +24,14 @@
 			<h1 class="not-displayed">Order menu</h1>
 			<ul id="product-menu"></ul>
 		</section>
-		<section id="checkout">
+		<section id="checkout" class="vanilla">
 			<h2>Your order</h2>
 			<ul id="checkout-list"></ul>
 			<button class="accent" id="btn-order">Complete order</button>
 		</section>
-		<section id="order-complete">Thanks, Name! Your order is on its way!</section>
+		<section id="order-complete" class="not-displayed">Thanks, Name! Your order is on its way!</section>
 	</main>
-	<dialog id="payment-mockup" closedby="any">
+	<dialog id="payment-mockup" class="vanilla" closedby="any">
 		<h2>Enter card details</h2>
 		<form name="payment-details" class="form">
 			<label for="card-name">Name on credit card:</label>

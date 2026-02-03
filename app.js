@@ -46,7 +46,7 @@ paymentDialog.addEventListener('submit', (e) => {
 	productMenu.appendChild(horizontalRule.cloneNode(true));
 	orderCompleteSection.textContent =
 	`Thanks, ${paymentForm.elements['card-name'].value}! Your order is on its way!`;
-	orderCompleteSection.style.display = 'block';
+	orderCompleteSection.classList.toggle('not-displayed')
 	paymentForm.reset();
 	paymentDialog.close();
 	renderUpdate(menuArray, menuElements, cart);
