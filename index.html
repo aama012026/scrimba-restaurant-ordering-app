@@ -19,6 +19,7 @@
 			 alt="A banner for the brand with a juicy burger in the background." 
 		/>
 	</header>
+
 	<main>
 		<section>
 			<h1 class="not-displayed">Order menu</h1>
@@ -31,24 +32,26 @@
 		</section>
 		<section id="order-complete" class="not-displayed">Thanks, Name! Your order is on its way!</section>
 	</main>
+
 	<dialog id="payment-mockup" class="vanilla" closedby="any">
 		<h2>Enter card details</h2>
 		<form name="payment-details" class="form">
 			<label for="card-name">Name on credit card:</label>
 			<input name="card-name" type="text" required 
-				   id="card-name" placeholder="Full Name Nameson"
+				   class="validation-border" id="card-name" placeholder="Full Name Nameson"
 			/>
 			<label for="card-number">Card Number:</label>
 			<input name="card-number" type="text" required inputmode="numeric"
-				   id="card-number" pattern="^[0-9 ]{13,19}$" placeholder="XXXX XXXX XXXX XXXX"
+				   class="validation-border" id="card-number" pattern="^[0-9 ]{13,19}$" placeholder="XXXX XXXX XXXX XXXX"
 			/>
 			<label for="cvv">CVV:</label>
 			<input name="cvv" type="text" required inputmode="numeric"
-				   id="cvv" pattern="^[0-9]{3,4}$" placeholder="xxx / xxxx"
+				   class="validation-border" id="cvv" pattern="^[0-9]{3,4}$" placeholder="xxx / xxxx"
 			/>
 			<button type="submit" class="accent" disabled>Pay</button>
 		</form>
 	</dialog>
+
 	<!-- Om dokumentet var større kunne templates vore i sin eigen fil. -->
 	<template id="product-template">
 		<li class="product">

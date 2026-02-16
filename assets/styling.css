@@ -15,6 +15,7 @@
 	--banner-width: 600px;
 }
 
+/* Struktur */
 body {
 	margin: 0 auto;
 	padding: 0;
@@ -24,6 +25,7 @@ body {
 	text-align: center;
 	font-family: smythe;
 }
+
 main {
 	padding: 0 30px;
 }
@@ -59,6 +61,109 @@ li {
 	
 }
 
+dialog {
+	width: 90vw;
+	max-width: var(--banner-width);
+	box-sizing: border-box;
+	border: none;
+	border-radius: 4px;
+	font-family: var(--f-plain);
+	box-shadow: 0 0 5rem #0005;
+	&::backdrop {
+		backdrop-filter: blur(4px);
+	}
+}
+
+form {
+	text-align: left;
+	& .accent {
+		display: block;
+		width: 90%;
+		margin: 2lh auto 0.5lh;
+	}
+}
+
+label {
+	padding-left: 5.3%;
+	font-size: 1rem;
+}
+
+input {
+	display: block;
+	box-sizing: border-box;
+	background: none;
+	border: 1px solid var(--c-rule);
+	width: 90%;
+	height: 2.5lh;
+	margin: 0 auto 0.5lh;
+	padding-left: 1em;
+	font-family: var(--f-plain);
+	
+}
+
+.banner {
+	width: 100vw;
+	max-width: max-content;
+	min-width: 320px;
+}
+
+.spacer {
+	flex-grow: 1;
+}
+
+/* Roller */
+.name {
+	font-size: 1.75rem;
+	@media (max-width: 420px) {
+		font-size: 1.25rem;
+	}
+}
+
+.ingredients {
+	color: var(--c-medium);
+	text-align: left;
+}
+
+.price {
+	font-size: 1.5rem;
+}
+
+.not-displayed {
+	display: none;
+}
+
+#checkout {
+	position: sticky;
+	bottom: 0;
+	border-top: 1px solid var(--c-rule);
+	padding: 1lh 0;
+}
+
+#order-complete {
+	margin: 1lh 0;
+	padding: 1lh;
+	border-radius: 2px;
+	font-size: 2rem;
+	color: var(--c-accent-dark);
+	background-color: var(--c-bg-green);
+}
+
+
+/* Stil */
+hr {
+	width: 100%;
+	&.slim {
+		border: none;
+		border-top: 1px solid var(--c-rule);
+	}
+	&.fat {
+		border: 1px solid var(--c-dark);
+	}
+}
+
+/* Denne veljaren hadde eg brote opp i fleire byggesteiner med betre separasjon
+i eit framtidig prosjekt, så dei kan komponerast i ulike kombinasjonar ved ev.
+utvida nettstad.*/ 
 button {
 	&.primary {
 		height: 3lh;
@@ -151,43 +256,12 @@ button {
 	}
 }
 
-dialog {
-	width: 90vw;
-	max-width: var(--banner-width);
-	box-sizing: border-box;
-	border: none;
-	border-radius: 4px;
-	font-family: var(--f-plain);
-	box-shadow: 0 0 5rem #0005;
-	&::backdrop {
-		backdrop-filter: blur(4px);
-	}
+.vanilla {
+	color: var(--c-dark);
+	background-color: var(--c-bg);
 }
 
-form {
-	text-align: left;
-	& .accent {
-		display: block;
-		width: 90%;
-		margin: 2lh auto 0.5lh;
-	}
-}
-
-label {
-	padding-left: 5.3%;
-	font-size: 1rem;
-}
-
-input {
-	display: block;
-	box-sizing: border-box;
-	background: none;
-	border: 1px solid var(--c-rule);
-	width: 90%;
-	height: 2.5lh;
-	margin: 0 auto 0.5lh;
-	padding-left: 1em;
-	font-family: var(--f-plain);
+.validation-border {
 	&:invalid {
 		border-left: 4px solid red;
 	}
@@ -197,66 +271,4 @@ input {
 	&:required:placeholder-shown{
 		border-left: 4px solid orange;
 	}
-}
-
-hr {
-	width: 100%;
-	&.slim {
-		border: none;
-		border-top: 1px solid var(--c-rule);
-	}
-	&.fat {
-		border: 1px solid var(--c-dark);
-	}
-}
-
-.banner {
-	width: 100vw;
-	max-width: max-content;
-	min-width: 320px;
-}
-
-.spacer {
-	flex-grow: 1;
-}
-
-.vanilla {
-	color: var(--c-dark);
-	background-color: var(--c-bg);
-}
-
-.name {
-	font-size: 1.75rem;
-	@media (max-width: 420px) {
-		font-size: 1.25rem;
-	}
-}
-
-.ingredients {
-	color: var(--c-medium);
-	text-align: left;
-}
-
-.price {
-	font-size: 1.5rem;
-}
-
-.not-displayed {
-	display: none;
-}
-
-#checkout {
-	position: sticky;
-	bottom: 0;
-	border-top: 1px solid var(--c-rule);
-	padding: 1lh 0;
-}
-
-#order-complete {
-	margin: 1lh 0;
-	padding: 1lh;
-	border-radius: 2px;
-	font-size: 2rem;
-	color: var(--c-accent-dark);
-	background-color: var(--c-bg-green);
 }
